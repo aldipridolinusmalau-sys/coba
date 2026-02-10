@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <title>Buat Kamu 💕</title>
+
+  <style>
+    body {
+      height: 100vh;
+      margin: 0;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      background: linear-gradient(135deg, #ffd6e8, #fff0f6);
+      font-family: 'Segoe UI', sans-serif;
+      color: #444;
+      overflow: hidden;
+    }
+
+    h2 {
+      font-weight: 500;
+      margin-bottom: 10px;
+    }
+
+    p {
+      font-size: 14px;
+      opacity: 0.8;
+      margin-bottom: 40px;
+    }
+
+    .box {
+      position: relative;
+      width: 320px;
+      height: 200px;
+    }
+
+    button {
+      position: absolute;
+      padding: 12px 26px;
+      border-radius: 30px;
+      font-size: 15px;
+      cursor: pointer;
+      border: none;
+      transition: all 0.2s ease;
+    }
+
+    #yes {
+      left: 50px;
+      top: 90px;
+      background: #ff5c8a;
+      color: white;
+      box-shadow: 0 8px 20px rgba(255,92,138,0.4);
+    }
+
+    #yes:hover {
+      transform: scale(1.05);
+    }
+
+    #no {
+      left: 180px;
+      top: 90px;
+      background: white;
+      color: #ff5c8a;
+      border: 2px solid #ff5c8a;
+    }
+
+    .heart {
+      position: absolute;
+      font-size: 18px;
+      animation: float 4s infinite ease-in-out;
+      opacity: 0.7;
+    }
+
+    @keyframes float {
+      0% { transform: translateY(0); opacity: 0; }
+      50% { opacity: 1; }
+      100% { transform: translateY(-80px); opacity: 0; }
+    }
+  </style>
+</head>
+
+<body>
+
+  <h2>Apakah kamu sayang aku? 💕</h2>
+  <p>Tenang… jawabannya nggak bikin aku pergi kok</p>
+
+  <div class="box">
+    <button id="yes">Iya 🤍</button>
+    <button id="no">Nggak</button>
+  </div>
+
+  <script>
+    const noBtn = document.getElementById("no");
+    const yesBtn = document.getElementById("yes");
+
+    noBtn.addEventListener("mouseover", () => {
+      const x = Math.random() * 240;
+      const y = Math.random() * 140;
+      noBtn.style.left = x + "px";
+      noBtn.style.top = y + "px";
+    });
+
+    yesBtn.addEventListener("click", () => {
+      document.body.innerHTML = `
+        <h2>Aku tau kamu bakal pilih itu 🤍</h2>
+        <p>Makasih ya… aku sayang kamu, hari ini, besok, dan seterusnya 💞</p>
+      `;
+    });
+
+    // hearts random
+    setInterval(() => {
+      const heart = document.createElement("div");
+      heart.className = "heart";
+      heart.innerText = "💗";
+      heart.style.left = Math.random() * 100 + "vw";
+      heart.style.bottom = "0px";
+      document.body.appendChild(heart);
+
+      setTimeout(() => heart.remove(), 4000);
+    }, 800);
+  </script>
+
+</body>
+</html>
